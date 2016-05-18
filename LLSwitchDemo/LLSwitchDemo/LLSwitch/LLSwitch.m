@@ -21,39 +21,25 @@ NSString * const EyesCloseAndOpenAnimationKey = @"EyesCloseAndOpenAnimationKey";
 
 @interface LLSwitch()
 
-/**
- *  switch background view
- */
+// 背景
 @property (nonatomic, strong) UIView *backgroundView;
 
-/**
- *  face layer
- */
+// 脸的图层
 @property (nonatomic, strong) CAShapeLayer *circleFaceLayer;
 
-/**
- *  paddingWidth
- */
+// 边距
 @property (nonatomic, assign) CGFloat paddingWidth;
 
-/**
- *  eyes layer
- */
+// 眼睛图层
 @property (nonatomic, strong) LLEyesLayer *eyesLayer;
 
-/**
- *  face radius
- */
+// 脸的半径
 @property (nonatomic, assign) CGFloat circleFaceRadius;
 
-/**
- *  the faceLayer move distance
- */
+// 移动的距离
 @property (nonatomic, assign) CGFloat moveDistance;
 
-/**
- *  handler layer animation manager
- */
+// 图层动画管理
 @property (nonatomic, strong) LLAnimationManager *animationManager;
 
 
@@ -89,29 +75,23 @@ NSString * const EyesCloseAndOpenAnimationKey = @"EyesCloseAndOpenAnimationKey";
 
 
 - (void)initSetUpView {
-    
     /**
      *  check the switch width and height
      */
     NSAssert(self.frame.size.width >= self.frame.size.height, @"switch width must be tall！");
     
-    /**
-     *  init property
-     */
-    _onColor = [UIColor colorWithRed:73/255.0 green:182/255.0 blue:235/255.0 alpha:1.f];
-    _offColor = [UIColor colorWithRed:211/255.0 green:207/255.0 blue:207/255.0 alpha:1.f];
-    _faceColor = [UIColor whiteColor];
-    _paddingWidth = self.frame.size.height * 0.1;
-    _circleFaceRadius = (self.frame.size.height - 2 * _paddingWidth) / 2;
-    _animationDuration = 1.2f;
-    _animationManager = [[LLAnimationManager alloc] initWithAnimationDuration:_animationDuration];
-    _moveDistance = self.frame.size.width - _paddingWidth * 2 - _circleFaceRadius * 2;
-    _on = NO;
-    _isAnimating = NO;
     
-    /**
-     *  setting init property
-     */
+    _onColor           = [UIColor colorWithRed:73/255.0 green:182/255.0 blue:235/255.0 alpha:1.f];
+    _offColor          = [UIColor colorWithRed:211/255.0 green:207/255.0 blue:207/255.0 alpha:1.f];
+    _faceColor         = [UIColor whiteColor];
+    _paddingWidth      = self.frame.size.height * 0.1;
+    _circleFaceRadius  = (self.frame.size.height - 2 * _paddingWidth) / 2;
+    _animationDuration = 1.2f;
+    _animationManager  = [[LLAnimationManager alloc] initWithAnimationDuration:_animationDuration];
+    _moveDistance      = self.frame.size.width - _paddingWidth * 2 - _circleFaceRadius * 2;
+    _on                = NO;
+    _isAnimating       = NO;
+
     self.backgroundView.backgroundColor = _offColor;
     self.circleFaceLayer.fillColor = _faceColor.CGColor;
     self.faceLayerWidth = self.circleFaceLayer.frame.size.width;
@@ -248,7 +228,7 @@ NSString * const EyesCloseAndOpenAnimationKey = @"EyesCloseAndOpenAnimationKey";
         _eyesLayer.isLiking = NO;
         _eyesLayer.mouthY = _eyesLayer.eyeRect.size.height * 7 / 4;
         _eyesLayer.frame = CGRectMake(_faceLayerWidth / 4, _circleFaceLayer.frame.size.height * 0.28, _faceLayerWidth / 2, _circleFaceLayer.frame.size.height * 0.72);
-    //    _eyesLayer.backgroundColor = [UIColor redColor].CGColor;
+        _eyesLayer.backgroundColor = [UIColor redColor].CGColor;
         [self.circleFaceLayer addSublayer:_eyesLayer];
 
     }

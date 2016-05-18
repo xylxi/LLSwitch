@@ -13,30 +13,19 @@
 IB_DESIGNABLE @interface LLSwitch : UIView
 
 
-/**
- *  switch on color
- */
+// 开关的打开颜色
 @property (nonatomic, strong) IBInspectable UIColor *onColor;
 
-/**
- *  switch off color
- */
+// 开关的关闭颜色
 @property (nonatomic, strong) IBInspectable UIColor *offColor;
 
-/**
- *  face on and off color
- */
+// 脸的颜色
 @property (nonatomic, strong) IBInspectable UIColor *faceColor;
 
-/**
- *  the duration is the face moving time
- */
+// 动画时间
 @property (nonatomic, assign) IBInspectable CGFloat animationDuration;
 
-
-/**
- *  the switch status is or isn't on
- */
+// 开关状态
 @property (nonatomic, assign) IBInspectable BOOL on;
 
 @property (nonatomic, weak) IBOutlet id <LLSwitchDelegate> delegate;
